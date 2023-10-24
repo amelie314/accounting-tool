@@ -4,7 +4,15 @@ import "../app/globals.css";
 import { useState } from "react";
 import List from "./List"; // 根據您的檔案結構調整路徑
 
-function Form({ onAdd }) {
+interface FormProps {
+  onAdd: (item: 
+              { amount: number; 
+                detail: string 
+          }) => void;
+}
+
+
+function Form({ onAdd }: FormProps) {
   const [amount, setAmount] = useState("");
   const [detail, setDetail] = useState("");
   const [type, setType] = useState("income"); // 新增
