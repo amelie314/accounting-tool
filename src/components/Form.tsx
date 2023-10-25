@@ -2,7 +2,6 @@
 
 import "../app/globals.css";
 import { useState } from "react";
-import List from "./List"; // 根據您的檔案結構調整路徑
 
 interface FormProps {
   onAdd: (item: 
@@ -11,15 +10,14 @@ interface FormProps {
           }) => void;
 }
 
-
 function Form({ onAdd }: FormProps) {
   const [amount, setAmount] = useState("");
   const [detail, setDetail] = useState("");
-  const [type, setType] = useState("income"); // 新增
+  const [type, setType] = useState("income"); 
 
   const handleSubmit = () => {
     const finalAmount =
-      type === "income" ? Number(amount) : Number(amount) * -1; // 根據選擇調整金額
+      type === "income" ? Number(amount) : Number(amount) * -1; 
     onAdd({ amount: finalAmount, detail });
     setAmount("");
     setDetail("");

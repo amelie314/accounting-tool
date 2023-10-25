@@ -5,14 +5,19 @@ import Form from "../components/Form";
 import List from "../components/List";
 import Link from "next/link";  // 引入 Link 元件
 
-function Accounting() {
-  const [records, setRecords] = useState([]);
+interface RecordType {
+  amount: number;
+  detail: string;
+}
 
-  const addRecord = (record) => {
+function Accounting() {
+  const [records, setRecords] = useState<RecordType[]>([]);
+
+  const addRecord = (record: RecordType) => {
     setRecords([...records, record]);
   };
 
-  const deleteRecord = (index) => {
+  const deleteRecord = (index: number) => {
     const newRecords = [...records];
     newRecords.splice(index, 1);
     setRecords(newRecords);
