@@ -11,15 +11,15 @@ interface FormProps {
 }
 
 function Form({ onAdd }: FormProps) {
-  const [amount, setAmount] = useState("");
-  const [detail, setDetail] = useState("");
-  const [type, setType] = useState("income"); 
+  // amount 應該是一個數字類型，因此初始值應該是 0 而不是空字符串
+  const [amount, setAmount] = useState<number>(0);
+  const [detail, setDetail] = useState<string>("");
+  const [type, setType] = useState<"income" | "expense">("income");
 
   const handleSubmit = () => {
-    const finalAmount =
-      type === "income" ? Number(amount) : Number(amount) * -1; 
+    const finalAmount = type === "income" ? amount : -amount;
     onAdd({ amount: finalAmount, detail });
-    setAmount("");
+    setAmount(0); // 重置為數字類型的初始值
     setDetail("");
   };
 
