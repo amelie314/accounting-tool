@@ -29,11 +29,10 @@ function Form({ onAdd }: FormProps) {
           記帳表單
         </h1>
         <div className="flex justify-between items-center mb-4">
-          <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="p-2 w-28 border rounded-md text-dark-gray bg-white"
-          >
+        <select
+          value={type}
+          onChange={(e) => setType(e.target.value as "income" | "expense")}
+          className="p-2 w-28 border rounded-md text-dark-gray bg-white">
             <option value="income">收入</option>
             <option value="expense">支出</option>
           </select>
