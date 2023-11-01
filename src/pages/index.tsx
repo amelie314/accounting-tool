@@ -6,11 +6,12 @@ import Link from "next/link";
 import Head from "next/head";
 // /src/pages/index.tsx
 import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // 登入函數
 const login = async (email: string, password: string) => {
   try {
-    await auth.signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(auth, email, password);
     // 登入成功後的處理...
   } catch (error) {
     console.error(error);
