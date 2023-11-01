@@ -38,8 +38,8 @@ function Form({ onAdd }: FormProps) {
           </select>
           <input
             type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={amount.toString()} // 將數字轉換為字符串以設置 value 屬性
+            onChange={(e) => setAmount(+e.target.value)} // 使用一元加號轉換字符串為數字
             placeholder="金額"
             className="p-2 w-28 border rounded-md text-black bg-white mx-2"
           />
