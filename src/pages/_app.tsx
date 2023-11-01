@@ -6,6 +6,8 @@ import { auth } from "../firebaseConfig";
 import Layout from "../app/layout";
 import Navbar from "../components/Navbar";
 
+import { User } from "firebase/auth";
+
 // 使用 AppProps 並擴展它來包括類型為 ReactNode 的 getLayout 屬性
 interface MyAppProps extends AppProps {
   Component: AppProps["Component"] & {
@@ -14,11 +16,11 @@ interface MyAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps }: MyAppProps) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     return auth.onAuthStateChanged((user) => {
-      setCurrentUser(user ? user : null);
+      setCurrentUser(user);
     });
   }, []);
 
@@ -28,7 +30,8 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return getLayout(
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Navbar currentUser={currentUser} />
       <Component {...pageProps} currentUser={currentUser} />
     </>
   );

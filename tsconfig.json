@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    // 暫時不要管型別
+    "noImplicitAny": false,
+    // 
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
