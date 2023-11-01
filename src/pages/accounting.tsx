@@ -16,16 +16,16 @@ import { db, auth } from "../firebaseConfig";
 import Form from "../components/Form";
 import List from "../components/List";
 
+interface RecordItem {
+  id: string;
+  amount: number;
+  detail: string;
+}
+
 function Accounting() {
   const [user] = useAuthState(auth);
-  const [records, setRecords] = useState([]);
+  const [records, setRecords] = useState<RecordItem[]>([]);
   const router = useRouter();
-
-  interface RecordItem {
-    id: string;
-    amount: number;
-    detail: string;
-  }
 
   useEffect(() => {
     if (user) {
@@ -40,6 +40,7 @@ function Accounting() {
     const recordsSnapshot = await getDocs(recordsColRef);
     const recordsData: RecordItem[] = recordsSnapshot.docs.map((doc) => ({
       id: doc.id,
+
       ...(doc.data() as {
         amount: number;
         detail: string;
