@@ -28,6 +28,3 @@ This project utilizes the following technologies:
 
 If you would like to contribute to the Accounting Tool, please fork the repository and submit a pull request. We welcome all contributions!
 
-## License
-
-[MIT](LICENSE)
